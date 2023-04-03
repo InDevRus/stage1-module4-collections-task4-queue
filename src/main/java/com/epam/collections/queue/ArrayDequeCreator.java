@@ -1,6 +1,7 @@
 package com.epam.collections.queue;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -9,14 +10,14 @@ public class ArrayDequeCreator extends PriorityQueue<String> {
         destination.add(source.remove());
     }
 
-    private void moveCards(Queue<Integer> playersCards, ArrayDeque<Integer> sharedCards) {
+    private void moveCards(Queue<Integer> playersCards, Deque<Integer> sharedCards) {
         if (playersCards.isEmpty()) {
             return;
         }
 
         playersCards.add(sharedCards.removeLast());
-        sharedCards.add(playersCards.remove());
-        sharedCards.add(playersCards.remove());
+        disposeCard(playersCards, sharedCards);
+        disposeCard(playersCards, sharedCards);
     }
     public ArrayDeque<Integer> createArrayDeque(Queue<Integer> firstQueue, Queue<Integer> secondQueue) {
         var sharedCards = new ArrayDeque<Integer>();
